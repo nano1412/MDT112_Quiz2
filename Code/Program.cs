@@ -4,21 +4,21 @@ class Program{
   static void Main(string[] args){
     int N = int.Parse(Console.ReadLine());
     int K = int.Parse(Console.ReadLine());
-    int k1 = K;
-    int k2 = K;
+    int judge1 = K;
+    int judge2 = K;
 
     for(int order = 1; order <= N;order++){
       int gender = int.Parse(Console.ReadLine());
-      int k1Score = int.Parse(Console.ReadLine());
-      int k2Score = int.Parse(Console.ReadLine());
-      if(SingerProfile(gender,k1Score,k2Score)){
-        PrintWinner(order,k1Score,ref k1, 1, k2Score, ref k2, 2);
+      int judge1Score = int.Parse(Console.ReadLine());
+      int judge2Score = int.Parse(Console.ReadLine());
+      if(SingerProfile(gender,judge1Score,judge2Score)){
+        PrintWinner(order, judge1Score, judge2Score, ref judge1, ref judge2, 1, 2);
       } else {
-        PrintWinner(order,k2Score,ref k2, 2, k1Score, ref k1, 1);
+        PrintWinner(order, judge2Score, judge1Score, ref judge2, ref judge1, 2, 1);
       }
     }
   }
-  static void PrintWinner(int order, int primary_score, ref int primary_space, int primary_number, int secondary_score,ref int secondary_space, int secondary_number){
+  static void PrintWinner(int order, int primary_score, int secondary_score, ref int primary_space, ref int secondary_space, int primary_number, int secondary_number){
     if(primary_space > 0){
       Console.WriteLine("{0} {1}",order,primary_number);
       primary_space--;
