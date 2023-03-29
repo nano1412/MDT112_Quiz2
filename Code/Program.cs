@@ -11,14 +11,16 @@ class Program{
       int gender = int.Parse(Console.ReadLine());
       int judge1Score = int.Parse(Console.ReadLine());
       int judge2Score = int.Parse(Console.ReadLine());
-      if(SingerProfile(gender,judge1Score,judge2Score)){
-        PrintWinner(order, judge1Score, judge2Score, ref judge1, ref judge2, 1, 2);
+
+      if(IsSingerGonnaGetPickByWho(gender,judge1Score,judge2Score)){
+        FinalCheckIsJudgeHaveSpaceForThatSinger(order, judge1Score, judge2Score, ref judge1, ref judge2, 1, 2);
       } else {
-        PrintWinner(order, judge2Score, judge1Score, ref judge2, ref judge1, 2, 1);
+        FinalCheckIsJudgeHaveSpaceForThatSinger(order, judge2Score, judge1Score, ref judge2, ref judge1, 2, 1);
       }
     }
   }
-  static void PrintWinner(int order, int primary_score, int secondary_score, ref int primary_space, ref int secondary_space, int primary_number, int secondary_number){
+
+  static void FinalCheckIsJudgeHaveSpaceForThatSinger(int order, int primary_score, int secondary_score, ref int primary_space, ref int secondary_space, int primary_number, int secondary_number){
     if(primary_space > 0){
       Console.WriteLine("{0} {1}",order,primary_number);
       primary_space--;
@@ -27,8 +29,10 @@ class Program{
       secondary_space--;
     }
   }
-  static bool SingerProfile(int gender, int k1Score, int k2Score){
-
+  
+  static bool IsSingerGonnaGetPickByWho(int gender, int k1Score, int k2Score){
+    // true mean judge1 will pick that singer
+    // false mean judge2 will pick that singer
     if((k1Score >=9 && k2Score < 9) || (k1Score >=9 && k2Score >= 9 && gender == 1)){
       return true;
     }
