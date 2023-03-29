@@ -13,15 +13,16 @@ class Program{
       int k1Score = int.Parse(Console.ReadLine());
       int k2Score = int.Parse(Console.ReadLine());
       if(SingerProfile(gender,k1Score,k2Score)){
-        if(k1 > 0 && k1Score >= k2Score){
+        if(k1 > 0){
           Console.WriteLine("{0} {1}",order,1);
           k1--;
         } else if (k2 > 0 && k2Score >= k1Score){
           Console.WriteLine("{0} {1}",order,2);
+          Console.WriteLine("LOL");
           k2--;
         }
       } else {
-        if(k2 > 0 && k2Score >= k1Score){
+        if(k2 > 0){
           Console.WriteLine("{0} {1}",order,2);
           k2--;
         } else if (k1 > 0 && k1Score >= k2Score){
